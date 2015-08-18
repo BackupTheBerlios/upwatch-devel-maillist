@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Upwatch-devel] uw_sysstat regex parsing problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/upwatch-devel/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:upwatch-devel%40lists.berlios.de?Subject=Re%3A%20%5BUpwatch-devel%5D%20uw_sysstat%20regex%20parsing%20problem&In-Reply-To=%3C44D881EA.8070100%40nedbsd.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Upwatch-devel] uw_sysstat regex parsing problem</H1>
+    <B>Wijnand Wiersma</B> 
+    <A HREF="mailto:upwatch-devel%40lists.berlios.de?Subject=Re%3A%20%5BUpwatch-devel%5D%20uw_sysstat%20regex%20parsing%20problem&In-Reply-To=%3C44D881EA.8070100%40nedbsd.nl%3E"
+       TITLE="[Upwatch-devel] uw_sysstat regex parsing problem">wijnand at nedbsd.nl
+       </A><BR>
+    <I>Tue Aug  8 14:22:02 CEST 2006</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It seems like the regex parsing in uw_sysstat and uwregexp behave
+different. Some regexes match fine when creating it in uwregexp but fail
+ when loaded by uw_sysstat.
+
+One example:
+Aug  8 14:10:01 server-03 sendmail[30290]: k78CA1IR030290:
+server-03.server.netland.nl [127.0.0.1] did not issue
+MAIL/EXPN/VRFY/ETRN during connection to MTA
+
+In uwregexp
+[LOGDATE] sendmail[PID]: [MSGID]: [HOSTNAME] \[[IPADDR]\] did not issue
+MAIL/EXPN/VRFY/ETRN during connection to MTA
+It matches, but uw_sysstat will give me non-green every time it hits
+that log line.
+
+I have been trying to debug this but did not find a solution yet.
+
+Wijnand
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/upwatch-devel">More information about the Upwatch-devel
+mailing list</a><br>
+</body></html>

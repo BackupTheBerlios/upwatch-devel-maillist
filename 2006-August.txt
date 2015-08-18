@@ -1,0 +1,26 @@
+From wijnand at nedbsd.nl  Tue Aug  8 14:22:02 2006
+From: wijnand at nedbsd.nl (Wijnand Wiersma)
+Date: Tue, 08 Aug 2006 14:22:02 +0200
+Subject: [Upwatch-devel] uw_sysstat regex parsing problem
+Message-ID: <44D881EA.8070100@nedbsd.nl>
+
+It seems like the regex parsing in uw_sysstat and uwregexp behave
+different. Some regexes match fine when creating it in uwregexp but fail
+ when loaded by uw_sysstat.
+
+One example:
+Aug  8 14:10:01 server-03 sendmail[30290]: k78CA1IR030290:
+server-03.server.netland.nl [127.0.0.1] did not issue
+MAIL/EXPN/VRFY/ETRN during connection to MTA
+
+In uwregexp
+[LOGDATE] sendmail[PID]: [MSGID]: [HOSTNAME] \[[IPADDR]\] did not issue
+MAIL/EXPN/VRFY/ETRN during connection to MTA
+It matches, but uw_sysstat will give me non-green every time it hits
+that log line.
+
+I have been trying to debug this but did not find a solution yet.
+
+Wijnand
+
+
